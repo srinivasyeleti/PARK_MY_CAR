@@ -1,0 +1,19 @@
+<style>
+    .body{
+        background-color: rgb(169, 170, 170);
+        font-family: monospace;
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+    }
+</style>
+
+<body class="body">
+    {% block content %}
+        {% for booking in bookings %}
+            <p> {{booking}} </p>
+            {% if booking.expired %}
+                <p>expired</p>
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+</body>

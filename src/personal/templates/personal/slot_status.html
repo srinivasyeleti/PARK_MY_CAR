@@ -1,0 +1,182 @@
+{% load static %}
+{% block content %}
+
+    <head>
+        <style>
+            body {
+			    background-image: url("https://t3.ftcdn.net/jpg/02/31/20/40/240_F_231204019_kkgDrHIQc6LLGcyEFBGEt8saioKjpOZQ.jpg");
+			    height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover; 
+            }
+
+            .bg {
+			    background-color: rgb(226, 166, 166);
+		    }
+
+            .unocc1 {
+                border: 10px;
+                color: black;
+                background-color: rgb(210, 215, 223);
+                margin-bottom: 10px;
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                width: 10%;
+                float:left;
+                height: 10%;
+                font-family: monospace;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 50px;
+                box-shadow:0 0 15px 4px rgba(255, 255, 255, 0.15);
+                border-radius: 10px;
+            }
+
+            .occ1 {
+                border: 10px;
+                color: white;
+                background-color: rgb(245, 70, 70);
+                margin-bottom: 10px;
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                width: 10%;
+                float:left;
+                height: 10%;
+                font-family: monospace;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 50px;
+                box-shadow:0 0 15px 4px rgba(0,0,0,0.15);
+                border-radius: 10px;
+            }
+
+            .unocc1:hover {
+                cursor: pointer;
+                background-color: rgb(141, 141, 141);
+            }
+
+            .container {
+                width: 90%;
+                height: 90%;
+                margin-left: 80px;
+                /* background-color: bisque; */
+            }
+
+            .occ1 .message {
+                visibility: hidden;
+                width: 120px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px 0;
+
+                /* Position the tooltip */
+                position: absolute;
+                z-index: 1;
+            }
+
+            .occ1:hover .message {
+                visibility: visible;
+            }
+        </style>
+    </head>
+
+    
+        <body class="bg">
+            <div class="container" style="margin-top: 100px;">
+                <div style="margin-left: 100px">
+                    {% with ''|center:col as col_range %}
+                    {% for i in col_range %}
+                        {% with 1|my_get_2:forloop.counter as the_slot %}
+                        {% if the_slot.is_occupied %}
+                            <div class="occ1">{{the_slot}} {{the_slot.vehicle_id}}
+                                <span class="message">occupied</span>
+                            </div>
+                            <!-- <em class="occ">{{the_slot}}</em> -->
+                        {% else %}
+                            {% if not request.user.is_staff %}
+                                <div class="unocc1"><a href="{% url 'slotBooking' the_slot.slot_id %}" style="text-decoration: none;">{{the_slot}}</a></div>
+                            {% else %}
+                                <div class="unocc1">{{the_slot}}</div>
+                            {% endif %}
+                        {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                    {% endwith %}
+                </div>
+                <div style="clear:both;">
+
+                </div>
+                <div style="margin-left: 100px">
+                    {% with ''|center:col as col_range %}
+                    {% for i in col_range %}
+                        {% with 2|my_get_2:forloop.counter as the_slot %}
+                        {% if the_slot.is_occupied %}
+                            <div class="occ1">{{the_slot}} {{the_slot.vehicle_id}}
+                                <span class="message">occupied</span>
+                            </div>
+                            <!-- <em class="occ">{{the_slot}}</em> -->
+                        {% else %}
+                            {% if not request.user.is_staff %}
+                                <div class="unocc1"><a href="{% url 'slotBooking' the_slot.slot_id %}" style="text-decoration: none;">{{the_slot}}</a></div>
+                            {% else %}
+                                <div class="unocc1">{{the_slot}}</div>
+                            {% endif %}
+                        {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                    {% endwith %}
+                </div>
+                <div style="clear:both;">
+
+                </div>
+                <div style="margin-left: 100px">
+                    {% with ''|center:col as col_range %}
+                    {% for i in col_range %}
+                        {% with 3|my_get_2:forloop.counter as the_slot %}
+                        {% if the_slot.is_occupied %}
+                            <div class="occ1">{{the_slot}} {{the_slot.vehicle_id}}
+                                <span class="message">occupied</span>
+                            </div>
+                            <!-- <em class="occ">{{the_slot}}</em> -->
+                        {% else %}
+                            {% if not request.user.is_staff %}
+                                <div class="unocc1"><a href="{% url 'slotBooking' the_slot.slot_id %}" style="text-decoration: none;">{{the_slot}}</a></div>
+                            {% else %}
+                                <div class="unocc1">{{the_slot}}</div>
+                            {% endif %}
+                        {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                    {% endwith %}
+                </div>
+                <div style="clear:both;">
+
+                </div>
+                <div style="margin-left: 100px">
+                    {% with ''|center:col as col_range %}
+                    {% for i in col_range %}
+                        {% with 4|my_get_2:forloop.counter as the_slot %}
+                        {% if the_slot.is_occupied %}
+                            <div class="occ1">{{the_slot}} {{the_slot.vehicle_id}}
+                                <span class="message">occupied</span>
+                            </div>
+                            <!-- <em class="occ">{{the_slot}}</em> -->
+                        {% else %}
+                            {% if not request.user.is_staff %}
+                                <div class="unocc1"><a href="{% url 'slotBooking' the_slot.slot_id %}" style="text-decoration: none;">{{the_slot}}</a></div>
+                            {% else %}
+                                <div class="unocc1">{{the_slot}}</div>
+                            {% endif %}
+                        {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                    {% endwith %}
+                </div>
+            </div>
+        </body>
+{% endblock %}

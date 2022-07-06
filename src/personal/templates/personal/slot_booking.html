@@ -1,0 +1,57 @@
+{% block content %}
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/free-photo/old-black-background-grunge-texture-dark-wallpaper-blackboard-chalkboard-room-wall_1258-28313.jpg?size=626&ext=jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size:cover; 
+        }
+        .head {
+            color: rgb(255, 255, 255);
+            font-family: monospace;
+            font-size: 50px; 
+            text-align: center;
+            margin-top: 200px;
+            margin-right: 20px;
+        }
+
+        .label_tag {
+            font-size: 30px;
+            color:rgb(255, 255, 255);
+            font-family: monospace;
+        }
+
+        .field {
+            margin-top: 200px;
+        }
+
+        .logReg_info {
+			color: rgb(255, 255, 255);
+			font-family: monospace;
+			font-size: 30px;
+			text-align: center;
+			margin-top: 270px;
+		}
+    </style>
+
+    
+    {% if request.user.is_authenticated %}
+    <h2 class="head">Slot Booking</h2>
+        <form method="post" style="text-align: center;">{% csrf_token %}
+            {% for field in booking_form %}
+                <p>
+                    <em class="label_tag">{{field.label_tag}}</em>
+                    <em class="field">{{field}}</em>
+                </p>
+            {% endfor %}
+            <button type="submit" style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); margin-right: 10px; border-radius: 5px;">BOOK SLOT</button>
+        </form>
+        
+    {% else %}
+        <h2 class="logReg_info">Looks like u are not currently logged in.<br>
+            Just <a href="{% url 'login' %}" style="font-style: italic; color: rgb(117, 117, 117);">login</a> 
+            or <a href="{% url 'register' %}" style="font-style: italic; color: rgb(117, 117, 117);">sign up</a> 
+            if not already registered. Then you can book your parking slot.</h2>
+    {% endif %}
+{% endblock %}

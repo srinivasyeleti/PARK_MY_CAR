@@ -1,0 +1,24 @@
+<style>
+    body {
+			background-image: url("https://img.freepik.com/free-photo/old-black-background-grunge-texture-dark-wallpaper-blackboard-chalkboard-room-wall_1258-28313.jpg?size=626&ext=jpg");
+			height: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover; 
+        }
+        
+    .body{
+        background-color: rgb(169, 170, 170);
+        font-family: monospace;
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+    }
+</style>
+
+<body class="body">
+    {% block content %}
+        {% for vehicle in vehicles %}
+            <p> {{vehicle}} </p>
+        {% endfor %}
+    {% endblock %}
+</body>

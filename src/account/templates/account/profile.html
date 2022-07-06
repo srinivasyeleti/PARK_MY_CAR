@@ -1,0 +1,60 @@
+{% block content %}
+{% load static %}
+
+
+<style>
+    body {
+			background-image: url("https://img.freepik.com/free-photo/old-black-background-grunge-texture-dark-wallpaper-blackboard-chalkboard-room-wall_1258-28313.jpg?size=626&ext=jpg");
+			height: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover; 
+        }
+        
+    .label_tag {
+        color: rgb(58, 230, 24);
+        font-family: monospace;
+        font-size: 20px;
+        margin-right: 15px;
+    }
+
+    .password_actions {
+        color: rgb(24, 199, 230);
+		font-size: 30px;
+		margin-right: 25px;
+		font-family: monospace;
+    }
+</style>
+<em style="font-family: monospace; font-size: 30px; color: yellowgreen;">
+    <h2>Hey, {{request.user.username}}</h2>
+    <h3>Your Profile</h3>
+</em>
+
+
+<form method="post">{% csrf_token %}
+    {% for field in account_form %}
+        <p>
+            <em class="label_tag">{{field.label_tag}}</em>
+            <em style="background-color: brown;">{{field}}</em>
+
+
+            {% if field.help_text %}
+                <small style="color: rgb(252, 19, 213);">{{field.help_text}}</small>
+            {% endif %}
+
+            {% for error in field.errors %}
+                <small style="color: red;">{{error}}</small>
+            {% endfor %}
+
+            {% if account_form.non_field_errors %}  
+                <!-- this is for the non-field errors, in our case if the user is not in DB he cannot login, so it is a validation error, -->
+            <small style="color: red;">{{account_form.non_field_errors}}</small>
+            {% endif %}
+        </p>
+    {% endfor %}
+
+    <button type="submit" style="color: rgb(20, 150, 182); font-family: monospace; background-color:  white; margin-top: 25px;">SAVE CHANGES</button>		<!-- when button clicked, execute submit and run post method -->
+    
+</form>
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% block content %}
+    <style>
+        .head {
+            color: brown;
+            font-family: monospace;
+            font-size: 50px; 
+            text-align: center;
+            margin-top: 200px;
+            margin-right: 20px;
+        }
+
+        .label_tag {
+            font-size: 30px;
+            color:brown;
+            font-family: monospace;
+        }
+
+        .field {
+            margin-top: 200px;
+        }
+    </style>
+    
+    <h2 class="head">Add ur bike</h2>
+    <form method="post" style="text-align: center;">{% csrf_token %}
+        {% for field in add_bike_form %}
+            <p>
+                <em class="label_tag">{{field.label_tag}}</em>
+                <em class="field">{{field}}</em>
+            </p>
+        {% endfor %}
+        <button type="submit" style="color: brown; background-color: rgb(255, 255, 255); margin-right: 10px; border-radius: 5px;">ADD</button>
+    </form>
+{% endblock %}
